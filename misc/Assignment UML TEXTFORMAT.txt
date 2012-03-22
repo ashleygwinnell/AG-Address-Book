@@ -1,0 +1,111 @@
+AddressBook
+--
+- frame : JFrame
+- model : DefaultListModel
+- list : JList
+- currentlyOpenedFile : File
+- contactPanel : ContactPanel
+- actionStack : ABActionStack
+- savedAtStackLocation: Integer
+- m_undo : JMenuItem
+- m_redo : JMenuItem
+- tb_undo : JButton
+- tb_redo : JButton
+- tf_search : JTextField
+- filter : String
+- contacts : ArrayList<Contact>
+- filteredContacts : ArrayList<Contact>
+- unfilteredContacts : ArrayList<Contact>
+--
++ AddressBook()
+# setFilter(text : String)
++ getFilter() : String
+
++ newFile()
++ open()
++ open(f : File)
++ importContacts()
++ importContacts(files: File[])
++ save() : Boolean
++ saveAs()
++ close()
++ isChangedAndUnsaved() : boolean
++ checkForInformationNotStorableInBUAB() : int
++ addToList(list: ArrayList<Contact>)
++ refreshList()
++ clearList()
++ getContactPanel() : ContactPanel
++ getActionStack() : ABActionStack
++ getFrame() : JFrame
++ getSavedAtStackLocation() : int
++ getCurrentlyOpenedFile() : File
+
+
+
+
+
+
+
+ABDialogs
+--
+--
++ createAndShowAddDialog()
++ createAndShowOpenFileSelector() : File[]
++ createAndShowSaveFileSelector() : File
++ createAndShowAboutDialog()
++ createAndShowUnsavedChangesDialog() : int
++ createAndShowInvalidExtensionDialog()
+
+
+
+
+
+
+
+Contact
+--
+- forenames : String
+- surname : String
+- prefixes : String
+- suffixes : String
+- addresses : ArrayList<Address>
+- emailAddresses : ArrayList<EmailAddress>
+- telephoneNumbers : ArrayList<TelephoneNumber>
+--
++ Contact()
++ setName(fullname: String)
++ getName() : String
++ getNameForSorting() : String
++ getForenames() : String
++ getForenames(delimiter : String) : String
++ getForenames(splitDelimiter : String, joinDelimiter : String, startIndex : Integer, length : Integer) : String
++ setForenames(forenames : String)
++ addForename(forename : String)
++ getSurname() : String
++ setSurname() : String
+
++ getGivenName() : String
++ getFamilyName() : String
++ getAdditionalNames() : String
++ addSuffix(suffix : String)
++ addSuffix(suffix : String, joinString : String)
++ getSuffixes() : String
++ addPrefix(prefix : String)
++ addPrefix(prefix : String, joinString : String)
++ getPrefixes() : String
+
++ getAddresses() : ArrayList<Address>
++ addAddress(a : Address)
++ removeAddress(a : Address)
+
++ getEmailAddresses() : ArrayList<EmailAddress>
++ addEmailAddress(e : EmailAddress)
++ removeEmailAddress(e : EmailAddress)
+
++ getTelephoneNumbers() : ArrayList<TelephoneNumber>
++ addTelephoneNumber(t : TelephoneNumber)
++ removeTelephoneNumber(t : TelephoneNumber)
+
++ combine(c : Contact)
++ hasInformationNotStorableInBUAB() : boolean
++ toSearchString() : String

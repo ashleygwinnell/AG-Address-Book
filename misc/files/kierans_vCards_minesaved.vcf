@@ -1,0 +1,48 @@
+BEGIN:VCARD
+VERSION:3.0
+N:;Lisa;;;
+FN:Lisa
+TEL;TYPE=CELL;TYPE=PREF:07935893483
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Barton;Kyle;;;
+FN:Kyle Barton
+TEL;TYPE=CELL;TYPE=PREF:07873694520
+TEL;TYPE=HOME:01795875566
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Patel;Kieran;;;
+FN:Kieran Patel
+EMAIL;TYPE=INTERNET;TYPE=HOME:kieranajp@googlemail.com
+EMAIL;TYPE=INTERNET;TYPE=HOME:kieranajp@yahoo.com
+EMAIL;TYPE=INTERNET;TYPE=HOME:cross.out.the.eyes@hotmail.co.uk
+EMAIL;TYPE=INTERNET;TYPE=HOME:invisibletomato@hotmail.co.uk
+EMAIL;TYPE=INTERNET;TYPE=HOME:kikipatu@hotmail.com
+EMAIL;TYPE=INTERNET;TYPE=HOME:kieranajp89@aol.com
+EMAIL;TYPE=INTERNET;TYPE=WORK:3430@bordengrammar.kent.sch.uk
+EMAIL;TYPE=INTERNET;TYPE=WORK:i7869019@bournemouth.ac.uk
+EMAIL;TYPE=INTERNET;TYPE=WORK:kieran.patel@systemc.com
+TEL;TYPE=HOME;TYPE=PREF:01795420932
+TEL;TYPE=HOME:01202210842
+TEL;TYPE=CELL:07843778591
+ADR;TYPE=HOME;TYPE=PREF:8\, Argent Way;Sittingbourne;Kent;ME10 5JX;England
+LABEL;TYPE=HOME;TYPE=PREF:8\, Argent Way\nSittingbourne\nKent\nME10 5JX\nEngland
+ADR;TYPE=HOME:70 Cranborne House;St. Paul's Place;Bournemouth;Dorset;BH8 8HF;England
+LABEL;TYPE=HOME:70 Cranborne House\nSt. Paul's Place\nBournemouth\nDorset\nBH8 8HF\nEngland
+ADR;TYPE=HOME:56 Stanfield Road;Bournemouth;Dorset;BH9 2NP;England
+LABEL;TYPE=HOME:56 Stanfield Road\nBournemouth\nDorset\nBH9 2NP\nEngland
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Thomsett;Kris;;;
+FN:Kris Thomsett
+TEL;TYPE=CELL;TYPE=PREF:07706012132
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:VSU;Lora;;;
+FN:Lora VSU
+TEL;TYPE=CELL;TYPE=PREF:07850793695
+END:VCARD

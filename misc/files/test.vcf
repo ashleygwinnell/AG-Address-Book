@@ -1,0 +1,11 @@
+BEGIN:VCARD
+ADR;TYPE=home:;;King's Road\,\nBournemouth\,\nDorset\,\nBH1 1SS;;;;United Kingdom
+EMAIL:test.person@test.com
+FN:Test Person
+N:Person;Test;;;
+TEL;TYPE=WORK:01644229292
+TEL;TYPE=HOME:09192028331
+TEL;TYPE=CELL:07798038304
+UID:rmZs9UXuVo
+VERSION:3.0
+END:VCARD

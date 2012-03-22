@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><umlet_diagram><help_text>// Uncomment the following line to change the fontsize:
+// fontsize=12
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on UML elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use ± or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text><zoom_level>10</zoom_level><element><type>com.umlet.element.base.Class</type><coordinates><x>560</x><y>1010</y><w>250</w><h>510</h></coordinates><panel_attributes>AddressBook
+--
+- frame : JFrame
+- model : DefaultListModel
+- list : JList
+- currentlyOpenedFile : File
+- contactPanel : ContactPanel
+- actionStack : ABActionStack
+- savedAtStackLocation: Integer
+- m_undo : JMenuItem
+- m_redo : JMenuItem
+- tb_undo : JButton
+- tb_redo : JButton
+- tf_search : JTextField
+- filter : String
+- contacts : ArrayList&lt;Contact&gt;
+- filteredContacts : ArrayList&lt;Contact&gt;
+- unfilteredContacts : ArrayList&lt;Contact&gt;
+--
++ AddressBook()
+# setFilter(text : String)
++ getFilter() : String
+
++ newFile()
++ open()
++ open(f : File)
++ importContacts()
++ importContacts(files: File[])
++ save() : Boolean
++ saveAs()
++ close()
++ isChangedAndUnsaved() : boolean
++ checkForInformationNotStorableInBUAB() : int
++ addToList(list: ArrayList&lt;Contact&gt;)
++ refreshList()
++ clearList()
++ getContactPanel() : ContactPanel
++ getActionStack() : ABActionStack
++ getFrame() : JFrame
++ getSavedAtStackLocation() : int
++ getCurrentlyOpenedFile() : File
+fg=black
+bg=yellow</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>0</x><y>260</y><w>640</w><h>220</h></coordinates><panel_attributes>ABDialogs
+--
+_+ IMPORT_DIALOG_COMBINE_ALL : int_
+_+ IMPORT_DIALOG_COMBINE_ONE : int_
+_+ IMPORT_DIALOG_REPLACE_ALL : int_
+_+ IMPORT_DIALOG_REPLACE_ONE : int_
+_+ IMPORT_DIALOG_KEEP_ALL : int_
+_+ IMPORT_DIALOG_KEEP_ONE : int_
+_- IMPORT_DIALOG_response : int_
+--
+_+ createAndShowAddDialog()_
+_+ createAndShowOpenFileSelector() : File[]_
+_+ createAndShowSaveFileSelector() : File_
+_+ createAndShowAboutDialog()_
+_+ createAndShowUnsavedChangesDialog() : int_
+_+ createAndShowInvalidExtensionDialog()_
+_+ createAndShowImportDialog(ab : AddressBook, frame : JFrame, title : String, existing : Contact, replacement : Contact, f File)_</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>930</x><y>1010</y><w>530</w><h>540</h></coordinates><panel_attributes>Contact
+--
+- forenames : String
+- surname : String
+- prefixes : String
+- suffixes : String
+- addresses : ArrayList&lt;Address&gt;
+- emailAddresses : ArrayList&lt;EmailAddress&gt;
+- telephoneNumbers : ArrayList&lt;TelephoneNumber&gt;
+--
++ Contact()
++ setName(fullname: String)
++ getName() : String
++ getNameForSorting() : String
++ getForenames() : String
++ getForenames(delimiter : String) : String
++ getForenames(splitDelimiter : String, joinDelimiter : String, startIndex : Integer, length : Integer) : String
++ setForenames(forenames : String)
++ addForename(forename : String)
++ getSurname() : String
++ setSurname() : String
+
++ getGivenName() : String
++ getFamilyName() : String
++ getAdditionalNames() : String
++ addSuffix(suffix : String)
++ addSuffix(suffix : String, joinString : String)
++ getSuffixes() : String
++ addPrefix(prefix : String)
++ addPrefix(prefix : String, joinString : String)
++ getPrefixes() : String
+
++ getAddresses() : ArrayList&lt;Address&gt;
++ addAddress(a : Address)
++ removeAddress(a : Address)
+
++ getEmailAddresses() : ArrayList&lt;EmailAddress&gt;
++ addEmailAddress(e : EmailAddress)
++ removeEmailAddress(e : EmailAddress)
+
++ getTelephoneNumbers() : ArrayList&lt;TelephoneNumber&gt;
++ addTelephoneNumber(t : TelephoneNumber)
++ removeTelephoneNumber(t : TelephoneNumber)
+
++ combine(c : Contact)
++ hasInformationNotStorableInBUAB() : boolean
++ toSearchString() : String</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>610</x><y>870</y><w>190</w><h>70</h></coordinates><panel_attributes>ABActionStack
+--
+addressBook : AddressBook
+--
++ ABActionStack(ab : AddressBook)
++ refreshUI()</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>470</x><y>520</y><w>450</w><h>300</h></coordinates><panel_attributes>ActionStack
+--
+- stack : ArrayList&lt;Action&gt;
+- top : int
+- m_undo : JMenuItem
+- m_redo : JMenuItem
+- tb_undo : JButton
+- tb_redo : JButton
+- autoRefreshingUI : boolean
+--
++ ActionStack()
++ setUI(m_undo : JMenuItem, m_redo : JMenuItem, tb_undo : JButton, tb_redo : JButton)
++ setAutoRefereshingUI(autoRefreshingUI : boolean)
++ isAutoRefreshingUI() : boolean
++ push()
++ push(a : Action)
++ pop() : Action
++ getSize() : int
++ getTop() : int
++ getAction(i : int) : Action
++ isAtTop() : boolean
++ isAtBottom() : boolean
++ clear()
++ refreshUI()</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>900</x><y>910</y><w>120</w><h>40</h></coordinates><panel_attributes>ABSeparator
+--
++ ABSeparator()</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>900</x><y>860</y><w>120</w><h>20</h></coordinates><panel_attributes>javax.swing.JPanel</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>1390</x><y>1780</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;-40;80;10</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>30</x><y>880</y><w>390</w><h>550</h></coordinates><panel_attributes>ContactPanel
+--
+- addressBook : AddressBook
+
+- currentContact : Contact
+- lbl_fullname : JLabel
+
+- addresses_po_box : ArrayList&lt;JTextField&gt;
+- addresses_extended_address : ArrayList&lt;JTextField&gt;
+- addresses_street_address : ArrayList&lt;JTextArea&gt;
+- addresses_locality_city : ArrayList&lt;JTextField&gt;
+- addresses_region_state_province_county : ArrayList&lt;JTextField&gt;
+- addresses_postcode : ArrayList&lt;JTextField&gt;
+- addresses_country : ArrayList&lt;JTextField&gt;
+- addresses_set_po_box : ArrayList&lt;JButton&gt;
+- addresses_set_extended_address : ArrayList&lt;JButton&gt;
+- addresses_type : ArrayList&lt;JComboBox&gt;
+- addresses_delete : ArrayList&lt;JButton&gt;
+
+- telephoneNumbers : ArrayList&lt;JTextField&gt;
+- telephoneNumbers_type : ArrayList&lt;JComboBox&gt;
+- telephoneNumbers_delete : ArrayList&lt;JButton&gt;
+
+- emailAddresses : ArrayList&lt;JTextField&gt;
+- emailAddresses_type : ArrayList&lt;JComboBox&gt;
+- emailAddresses_mailto : ArrayList&lt;JButton&gt;
+- emailAddresses_delete : ArrayList&lt;JButton&gt;
+
+- pnl_fullname : JPanel
+- pnl_addresses : JPanel
+- pnl_telephoneNumbers : JPanel
+- pnl_emailAddresses : JPanel
+- pnl_buttons : JPanel
+
+- btn_add_address : JButton
+- btn_add_telephoneNumber : JButton
+- btn_add_emailAddress : JButton
+- btn_edit_name : JButton
+
+- w : int
+--
++ ContactPanel()
++ setEnabled(b : boolean)
++ repopulate(c : Contact)
+
+# createAndShowSetPOBoxNumberDialog(frame : JFrame, ad : Address)
+# createAndShowSetExtendedAddressDialog(frame : JFrame, ad : Address)
+# createAndShowAddAddressDialog(frame : JFrame)
+# createAndShowAddTelephoneNumberDialog(frame : JFrame)
+# createAndShowAddEmailAddressDialog(frame : JFrame)
+# createAndShowEditNameDialog(frame : JFrame)
+
+</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>140</x><y>1570</y><w>340</w><h>150</h></coordinates><panel_attributes>Exporter
+--
+- f : File
+- contacts : ArrayList&lt;Contact&gt;
+--
++ Exporter()
++ write()
+- write(s : Structure)
+- writeBUAB()
+- writeVCARD30()
+- BUAB_getTelephoneNumber(c : Contact, t : Type, b : boolean)
+- BUAB_getPreferredAddress(c : Contact)</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>500</x><y>1570</y><w>160</w><h>210</h></coordinates><panel_attributes>Importer
+--
+- fs : ArrayList&lt;File&gt;
+_+ BUAB_
+_+ VCARD_1_
+_+ VCARD_2_
+--
++ Importer(s : String)
++ Importer(f : File)
++ Importer(fs : File[])
++ load()
+- clean(s : Structure, s : String)
+- importVCard30(i : int)
+- importBUAB(i : int)
+_+ getFileExtension(f : File)_
+_+ isValidExtension(f : File)_
+_+ getVCardVersion(f : File)_</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>160</x><y>640</y><w>160</w><h>80</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
+Structure
+--
++ BUAB
++ VCARD_21
++ VCARD_30</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>280</x><y>10</y><w>400</w><h>20</h></coordinates><panel_attributes>javax.swing.filechooser.FileFilter</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>490</x><y>80</y><w>190</w><h>100</h></coordinates><panel_attributes>BUABFileFilter
+--
+- singular : boolean
+--
++ BUABFileFilter()
++ BUABFileFilter(singular : boolean)
++ accept(f : File) : boolean
++ getDescription() : String</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>280</x><y>80</y><w>200</w><h>100</h></coordinates><panel_attributes>VCardFileFilter
+--
+- singular : boolean
+--
++ BUABFileFilter()
++ BUABFileFilter(singular : boolean)
++ accept(f : File) : boolean
++ getDescription() : String</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>350</x><y>0</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>30;30;30;80</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>900</x><y>1200</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>30;30;30;80</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>1470</x><y>1450</y><w>260</w><h>460</h></coordinates><panel_attributes>Address
+--
++ Type : enum
+- type : Type
+- preferred : boolean
+
+- poBoxNumber : String
+- extendedAddress : String
+- streetAddress : String
+- city : String
+- county : String
+- postcode : String
+- country : String
+--
++ Address()
++ Address(type : Type, preferred : boolean)
+
++ setPOBoxNumber(number : String)
++ getPOBoxNumber() : String
+
++ setExtendedAddress(address : String)
++ getExtendedAddress() : String
+
++ setStreetAddress(address : String)
++ getStreetAddress() : String
+
++ setCity(city : String)
++ getCity() : String
+
++ setCounty(county : String)
++ getCounty() : String
+
++ setPostcode(postcode : String)
++ getPostcode() : String
+
++ setCountry(String)
++ getCountry() : String
+
++ setPreferred(boolean)
++ isPreferred() : boolean
+
++ setType(Type)
++ getType() : Type
+
+- clean(Structure, String) : String
+
++ toString(c : Contact, s : Structure) : String
++ toSearchString() : String
+
+
+</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>1470</x><y>1230</y><w>370</w><h>210</h></coordinates><panel_attributes>EmailAddress
+--
++ Type : enum
+- type : Type
+- address : String
+- preferred : boolean
+--
++ EmailAddress()
++ EmailAddress(address : String, preferred : boolean, type : Type)
+
++ setAddress(emailaddress : String)
++ getAddress() : String
+
++ setPreferred(boolean)
++ isPreferred() : boolean
+
++ setType(Type)
++ getType() : Type
+
++ toString(c : Contact, s : Structure) : String
++ toSearchString() : String</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>1470</x><y>1010</y><w>370</w><h>210</h></coordinates><panel_attributes>TelephoneNumber
+--
++ Type : enum
+- type : Type
+- number : String
+- preferred : boolean
+--
++ TelephoneNumber()
++ TelephoneNumber(number : String, preferred : boolean, type : Type)
+
++ setNumber(number : String)
++ getNumber() : String
+
++ setPreferred(boolean)
++ isPreferred() : boolean
+
++ setType(Type)
++ getType() : Type
+
++ toString(c : Contact, s : Structure) : String
++ toSearchString() : String</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Interface</type><coordinates><x>450</x><y>870</y><w>120</w><h>110</h></coordinates><panel_attributes>Action
+--
++ getUndoText() : String
++ getRedoText() : String
++ doAction()
++ undoAction()</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>650</x><y>430</y><w>320</w><h>40</h></coordinates><panel_attributes>StringUtil
+--
+_+ splitWithoutTrimming(subject : String, splitAt : char) : String[]_</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>680</x><y>1570</y><w>230</w><h>190</h></coordinates><panel_attributes>RecentFileSet
+--
+_- GENERATED_ID : int_
+- id : int
+- size : int
+- items : ArrayList&lt;String&gt;
+- filename : String
+--
++ RecentFileSet()
++ RecentFileSet(size : int)
+_- generateId() : int_
++ add(filename : String)
++ get() : ArrayList&lt;String&gt;
++ isRecentFile(filename : String) : boolean
++ isRecentFile(file : File) : boolean
+</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>670</x><y>300</y><w>280</w><h>120</h></coordinates><panel_attributes>RecentFileSetPreferences
+--
+- preferences : java.util.prefs.Preferences
+--
++ RecentFileSetPreferences()
++ RecentFileSetPreferences(c : Class&lt;?&gt;)
++ add(filename : String)
++ get() : ArrayList&lt;String&gt;
++ isRecentFile(filename : String) : boolean
++ isRecentFile(file : File) : boolean
+</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>1370</x><y>1460</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes><additional_attributes>90;30;100;30</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>1370</x><y>1240</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes><additional_attributes>90;30;100;30</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>1370</x><y>1030</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes><additional_attributes>90;30;100;30</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>580</x><y>1490</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes><additional_attributes>30;30;30;80</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>730</x><y>1490</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+</panel_attributes><additional_attributes>30;30;30;80</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>390</x><y>950</y><w>190</w><h>270</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+contactPanel</panel_attributes><additional_attributes>170;250;30;30</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>650</x><y>910</y><w>116</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+actionStack</panel_attributes><additional_attributes>60;100;60;30</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>680</x><y>790</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>30;30;30;80</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>780</x><y>1020</y><w>170</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+contacts</panel_attributes><additional_attributes>30;50;150;50</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>280</x><y>1460</y><w>300</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>280;30;30;110</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>930</x><y>850</y><w>50</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>30;30;30;60</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>760</x><y>900</y><w>160</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>30;110;140;30</additional_attributes></element></umlet_diagram>
